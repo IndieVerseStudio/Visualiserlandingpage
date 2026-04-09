@@ -15,7 +15,7 @@ import { ProblemCard } from './components/ProblemCard';
 import { DeploymentCard } from './components/DeploymentCard';
 import { MetricCard } from './components/MetricCard';
 
-const CALENDLY_LINK = "https://calendly.com/PLACEHOLDER";
+const CALENDLY_LINK = "https://calendly.com/prakhar-29/30min";
 
 export default function App() {
   return (
