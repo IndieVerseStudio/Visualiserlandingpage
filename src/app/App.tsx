@@ -1,22 +1,21 @@
 import { motion } from 'motion/react';
-import { 
-  Upload, 
-  Palette, 
-  Zap, 
-  Cloud, 
-  Code, 
-  Puzzle, 
+import {
+  Cloud,
+  Code,
+  Puzzle,
   Server,
   Layers,
   AlertCircle,
-  Grid3x3
+  Grid3x3,
+  Mail,
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
-import { BeforeAfterCard } from './components/BeforeAfterCard';
 import { ProblemCard } from './components/ProblemCard';
-import { StepCard } from './components/StepCard';
 import { DeploymentCard } from './components/DeploymentCard';
 import { MetricCard } from './components/MetricCard';
-import { ImageWithFallback } from './components/figma/ImageWithFallback';
+
+const CALENDLY_LINK = "https://calendly.com/PLACEHOLDER";
 
 export default function App() {
   return (
@@ -47,8 +46,28 @@ export default function App() {
         </svg>
       </div>
 
+      {/* Navigation */}
+      <nav className="relative z-20 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+        <div className="text-xl font-bold">
+          <span className="text-[#2affc0]">Indieverse</span> Studio
+        </div>
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#showcase" className="text-[#a0a0a0] hover:text-white transition-colors">Results</a>
+          <a href="#how-it-works" className="text-[#a0a0a0] hover:text-white transition-colors">How It Works</a>
+          <a href="#deploy" className="text-[#a0a0a0] hover:text-white transition-colors">Deployment</a>
+          <a
+            href={CALENDLY_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#2affc0] text-[#2b2b2d] px-5 py-2 rounded-lg font-semibold hover:bg-[#35d2b8] transition-all duration-300"
+          >
+            Book a Demo
+          </a>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -60,16 +79,24 @@ export default function App() {
                 See Paint on Any Building Before a Single Brushstroke
               </h1>
               <p className="text-xl text-[#a0a0a0] mb-8 leading-relaxed">
-                The AI paint visualiser that handles complex exteriors, cluttered interiors, and everything your current tool can't.
+                The AI paint visualiser that handles complex exteriors, cluttered interiors, and everything your current tool can't. Photorealistic results, not simple color overlays.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="bg-[#2affc0] text-[#2b2b2d] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#35d2b8] transition-all duration-300 hover:scale-105">
-                  Try It On Your Building
-                </button>
-                <button className="border-2 border-[#2affc0] text-[#2affc0] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(42,255,192,0.1)] transition-all duration-300">
+                <a
+                  href={CALENDLY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#2affc0] text-[#2b2b2d] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#35d2b8] transition-all duration-300 hover:scale-105 text-center"
+                >
                   Book a Demo
-                </button>
+                </a>
+                <a
+                  href="#showcase"
+                  className="border-2 border-[#2affc0] text-[#2affc0] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(42,255,192,0.1)] transition-all duration-300 text-center"
+                >
+                  See Examples
+                </a>
               </div>
 
               <p className="text-sm text-[#a0a0a0]">
@@ -84,11 +111,17 @@ export default function App() {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden border-2 border-[rgba(42,255,192,0.3)] shadow-2xl">
-                <BeforeAfterCard
-                  beforeImage="https://images.unsplash.com/photo-1770319566939-710a8306eba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBidWlsZGluZyUyMGZhY2FkZSUyMGFyY2hpdGVjdHVyZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDExOTU2MHww&ixlib=rb-4.1.0&q=80&w=1080"
-                  afterImage="https://images.unsplash.com/photo-1763058796629-453816d7379a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMHBhaW50ZWQlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDExOTU2Mnww&ixlib=rb-4.1.0&q=80&w=1080"
-                  label="Hero Example"
+                <img
+                  src="/images/01b_hero_exterior_villa.jpg"
+                  alt="AI Paint Visualiser — before and after on a villa exterior"
+                  className="w-full h-auto"
                 />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="bg-black/50 px-3 py-1 rounded">Before</span>
+                    <span className="bg-[#2affc0]/80 text-[#2b2b2d] px-3 py-1 rounded">After</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -96,7 +129,7 @@ export default function App() {
       </section>
 
       {/* Before/After Showcase */}
-      <section className="relative py-20 px-6">
+      <section id="showcase" className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,25 +139,38 @@ export default function App() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">See the Difference</h2>
-            <p className="text-xl text-[#a0a0a0]">Real results on real buildings</p>
+            <p className="text-xl text-[#a0a0a0]">Real results on real buildings — exteriors and interiors</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <BeforeAfterCard
-              beforeImage="https://images.unsplash.com/photo-1770319566939-710a8306eba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBidWlsZGluZyUyMGZhY2FkZSUyMGFyY2hpdGVjdHVyZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDExOTU2MHww&ixlib=rb-4.1.0&q=80&w=1080"
-              afterImage="https://images.unsplash.com/photo-1763058796629-453816d7379a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMHBhaW50ZWQlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDExOTU2Mnww&ixlib=rb-4.1.0&q=80&w=1080"
-              label="Complex Exterior"
-            />
-            <BeforeAfterCard
-              beforeImage="https://images.unsplash.com/photo-1687180498602-5a1046defaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbnRlcmlvciUyMHJvb20lMjBmdXJuaXR1cmUlMjBkZXNpZ258ZW58MXx8fHwxNzc0MTE5NTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-              afterImage="https://images.unsplash.com/photo-1687180498602-5a1046defaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbnRlcmlvciUyMHJvb20lMjBmdXJuaXR1cmUlMjBkZXNpZ258ZW58MXx8fHwxNzc0MTE5NTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-              label="Cluttered Interior"
-            />
-            <BeforeAfterCard
-              beforeImage="https://images.unsplash.com/photo-1760072513403-d70003481414?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwc2hvd3Jvb20lMjByZXRhaWwlMjBzcGFjZXxlbnwxfHx8fDE3NzQxMTk1NjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              afterImage="https://images.unsplash.com/photo-1760072513403-d70003481414?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwc2hvd3Jvb20lMjByZXRhaWwlMjBzcGFjZXxlbnwxfHx8fDE3NzQxMTk1NjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              label="Commercial Space"
-            />
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { src: "/images/01a_hero_exterior_before_after.jpg", label: "Apartment Exterior", alt: "Apartment building before and after paint visualization" },
+              { src: "/images/02a_hero_interior_before_after.jpg", label: "Living Room Interior", alt: "Living room before and after paint visualization" },
+              { src: "/images/01_hero_exterior_before_after.jpg", label: "Multi-Story Building", alt: "Multi-story building before and after paint visualization" },
+              { src: "/images/02c_hero_interior_bedroom.jpg", label: "Bedroom Interior", alt: "Bedroom before and after paint visualization" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-[#353538] rounded-xl overflow-hidden border border-[rgba(42,255,192,0.2)] hover:border-[rgba(42,255,192,0.4)] transition-all duration-300"
+              >
+                <div className="relative">
+                  <img src={item.src} alt={item.alt} className="w-full h-auto" />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                    <div className="flex justify-between text-xs font-medium">
+                      <span className="bg-black/50 px-2 py-1 rounded">Before</span>
+                      <span className="bg-[#2affc0]/80 text-[#2b2b2d] px-2 py-1 rounded">After</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 text-center">
+                  <p className="text-[#2affc0] font-medium">{item.label}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -143,31 +189,50 @@ export default function App() {
             <p className="text-xl text-[#a0a0a0]">The truth about existing tools</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <ProblemCard
-              Icon={Layers}
-              title="Flat Color Overlays"
-              description="Most tools paint a flat color on a detected wall. Shadows, textures, and lighting disappear. It looks fake."
-              delay={0}
-            />
-            <ProblemCard
-              Icon={AlertCircle}
-              title="Can't Handle Complexity"
-              description="Upload a real building exterior or a room with furniture, and existing tools break down completely."
-              delay={0.1}
-            />
-            <ProblemCard
-              Icon={Grid3x3}
-              title="Limited to Simple Scenes"
-              description="They work on a plain white wall in a studio photo. Not on the buildings your customers actually live in."
-              delay={0.2}
-            />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden border-2 border-red-500/30"
+            >
+              <img
+                src="/images/04a_problem_bad_visualisation.jpg"
+                alt="Example of a bad paint visualiser — flat color overlay that looks fake"
+                className="w-full h-auto"
+              />
+              <div className="absolute top-4 left-4 bg-red-500/80 px-3 py-1 rounded text-sm font-medium">
+                Typical "Visualiser" Result
+              </div>
+            </motion.div>
+
+            <div className="grid gap-6">
+              <ProblemCard
+                Icon={Layers}
+                title="Flat Color Overlays"
+                description="Most tools paint a flat color on a detected wall. Shadows, textures, and lighting disappear. It looks fake — and your customers notice."
+                delay={0}
+              />
+              <ProblemCard
+                Icon={AlertCircle}
+                title="Can't Handle Complexity"
+                description="Upload a real building exterior or a room with furniture, and existing tools break down completely. Columns, trim, and facades? Forget it."
+                delay={0.1}
+              />
+              <ProblemCard
+                Icon={Grid3x3}
+                title="Limited to Simple Scenes"
+                description="They work on a plain white wall in a studio photo. Not on the buildings your customers actually live and work in."
+                delay={0.2}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section className="relative py-20 px-6">
+      <section id="how-it-works" className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -176,38 +241,82 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">3 Steps to Photorealistic Visualization</h2>
-            <p className="text-xl text-[#a0a0a0]">Simple process, stunning results</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-[#a0a0a0]">Three steps to photorealistic visualization</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            <StepCard
-              stepNumber="01"
-              title="Upload Any Image"
-              description="Interior, exterior, simple or complex. Our AI understands every surface in the image — walls, trim, facades, columns — no matter how cluttered the scene."
-              image="https://images.unsplash.com/photo-1640419238789-85f92c946cb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcGFydG1lbnQlMjBidWlsZGluZyUyMHVyYmFuJTIwZmFjYWRlfGVufDF8fHx8MTc3NDExOTU2Mnww&ixlib=rb-4.1.0&q=80&w=1080"
-              delay={0}
-            />
-            <StepCard
-              stepNumber="02"
-              title="Pick Your Colors"
-              description="Select from your brand's color catalog. Our AI identifies every paintable surface and lets your customer apply colors individually or in groups."
-              image="https://images.unsplash.com/photo-1687180498602-5a1046defaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbnRlcmlvciUyMHJvb20lMjBmdXJuaXR1cmUlMjBkZXNpZ258ZW58MXx8fHwxNzc0MTE5NTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-              delay={0.1}
-            />
-            <StepCard
-              stepNumber="03"
-              title="See It in Seconds"
-              description="Get a photorealistic preview with accurate shadows, textures, and lighting. Not a color overlay — a true visualization of how paint will actually look."
-              image="https://images.unsplash.com/photo-1773558048595-0eb9c121f119?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXNpZGVudGlhbCUyMGhvbWUlMjBleHRlcmlvciUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NzQxMTk1NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              delay={0.2}
-            />
+            {[
+              {
+                step: "01",
+                title: "Upload Any Image",
+                description: "Interior, exterior, simple or complex. Our AI understands every surface — walls, trim, facades, columns — no matter how cluttered the scene.",
+              },
+              {
+                step: "02",
+                title: "Pick Your Colors",
+                description: "Select from your brand's color catalog. Our AI identifies every paintable surface and lets your customers apply colors individually or in groups.",
+              },
+              {
+                step: "03",
+                title: "See It in Seconds",
+                description: "Get a photorealistic preview with accurate shadows, textures, and lighting. Not a color overlay — a true visualization of how paint will actually look.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-[#353538] rounded-2xl p-8 relative overflow-hidden group hover:bg-[#3d3d40] transition-colors duration-300"
+              >
+                <div className="relative z-10">
+                  <div className="text-[8rem] font-bold text-[rgba(42,255,192,0.1)] leading-none mb-4">
+                    {item.step}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
+                  <p className="text-[#a0a0a0] leading-relaxed">{item.description}</p>
+                </div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2affc0] via-[#35d2b8] to-[#690094] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Deployment Options Section */}
+      {/* Multi-Device Mockup Section */}
       <section className="relative py-20 px-6 bg-[#232325]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Works Everywhere Your Customers Are</h2>
+            <p className="text-xl text-[#a0a0a0]">Web, tablet, and mobile — fully responsive, fully branded as yours</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="rounded-2xl overflow-hidden"
+          >
+            <img
+              src="/images/05c_mockup_multi_device.jpg"
+              alt="Paint Visualiser running on laptop, tablet, and mobile"
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Deployment Options Section */}
+      <section id="deploy" className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -249,6 +358,47 @@ export default function App() {
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section className="relative py-20 px-6 bg-[#232325]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Why Paint Companies Choose Us</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Best-in-Class Accuracy", description: "GenAI-powered surface detection that handles complex buildings, columns, trim, and facades — not just plain walls." },
+              { title: "Photorealistic Results", description: "Preserves shadows, textures, and natural lighting. Your customers see how paint actually looks, not a flat overlay." },
+              { title: "Exteriors That Work", description: "The only visualiser that reliably handles complex building exteriors — commercial, residential, multi-story." },
+              { title: "Smart AI Features", description: "Auto-grouping of similar surfaces, AI Cleanup, and intelligent surface detection that improves with every image." },
+              { title: "Your Brand, Your Product", description: "White-label ready. Load your color catalog, apply your branding, deploy on your domain. Customers never see us." },
+              { title: "Production-Proven", description: "Trusted by one of India's top 3 paint companies. Millions of visualizations served across web and mobile." },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="flex gap-4"
+              >
+                <CheckCircle2 className="w-6 h-6 text-[#2affc0] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                  <p className="text-[#a0a0a0] leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Social Proof Section */}
       <section className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
@@ -272,6 +422,47 @@ export default function App() {
         </div>
       </section>
 
+      {/* Complex Exterior Showcase */}
+      <section className="relative py-20 px-6 bg-[#232325]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl font-bold mb-6">Complex Exteriors? That's Where We Shine.</h2>
+              <p className="text-xl text-[#a0a0a0] mb-6 leading-relaxed">
+                Most visualisers give up on buildings with columns, arches, decorative trim, or mixed materials. Ours doesn't. Our AI identifies every paintable surface — even on the most architecturally complex buildings.
+              </p>
+              <a
+                href={CALENDLY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
+              >
+                See it on your buildings <ArrowRight className="w-5 h-5" />
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden border border-[rgba(42,255,192,0.2)]"
+            >
+              <img
+                src="/images/03a_showcase_complex_exterior.jpg"
+                alt="Complex building exterior with precise paint visualization"
+                className="w-full h-auto"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="relative py-20 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#2affc0] via-[#35d2b8] to-[#690094] opacity-90" />
@@ -283,23 +474,31 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-[#2b2b2d]">
-              See It On Your Buildings
+              Ready to Upgrade Your Paint Experience?
             </h2>
             <p className="text-xl mb-8 text-[#2b2b2d]">
-              Upload a photo of any building. We'll show you what your paint looks like on it — free.
+              Book a 15-minute call. We'll show you what our AI can do on your actual buildings — free, no commitment.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <button className="bg-[#2b2b2d] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a1a1c] transition-all duration-300 hover:scale-105">
-                Try the Demo
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300">
-                Book a Call
-              </button>
+              <a
+                href={CALENDLY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#2b2b2d] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a1a1c] transition-all duration-300 hover:scale-105"
+              >
+                Book a Demo
+              </a>
+              <a
+                href="mailto:hello@indieverse.studio"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 inline-flex items-center justify-center gap-2"
+              >
+                <Mail className="w-5 h-5" /> Email Us
+              </a>
             </div>
 
             <p className="text-sm text-[#2b2b2d]">
-              Free pilot available — 60 days, 200 visualizations, no commitment.
+              Free pilot available — 60 days, 200 visualizations, no commitment
             </p>
           </motion.div>
         </div>
@@ -310,19 +509,22 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-2">Indieverse Studio</h3>
-              <p className="text-[#a0a0a0]">visualiser.indieverse.studio</p>
-              <p className="text-[#a0a0a0]">hello@indieverse.studio</p>
+              <h3 className="text-2xl font-bold mb-2">
+                <span className="text-[#2affc0]">Indieverse</span> Studio
+              </h3>
+              <p className="text-[#a0a0a0]">The world's most accurate AI paint visualiser</p>
+              <p className="text-[#a0a0a0] mt-2">hello@indieverse.studio</p>
             </div>
             <div className="flex flex-wrap gap-6 md:justify-end items-start">
-              <a href="#" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Product</a>
-              <a href="#" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Pricing</a>
-              <a href="#" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Contact</a>
-              <a href="#" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Privacy</a>
+              <a href="#showcase" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Results</a>
+              <a href="#how-it-works" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">How It Works</a>
+              <a href="#deploy" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Deployment</a>
+              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Book a Demo</a>
+              <a href="https://www.indieverse.studio" target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Indieverse.studio</a>
             </div>
           </div>
           <div className="text-center text-sm text-[#a0a0a0] border-t border-[rgba(255,255,255,0.1)] pt-8">
-            © 2026 Indieverse Studio. All rights reserved.
+            &copy; 2026 Indieverse Studio. All rights reserved.
           </div>
         </div>
       </footer>
