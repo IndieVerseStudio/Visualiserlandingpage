@@ -81,15 +81,17 @@ export function BeforeAfterCard({ beforeImage, afterImage, label }: BeforeAfterC
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg cursor-ew-resize">
             <svg className="w-5 h-5 text-[#2b2b2d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 8l-4 4 4 4m-6-8l-4 4 4 4" />
             </svg>
           </div>
         </div>
       </div>
 
-      <div className="p-4 text-center">
-        <p className="text-[#2affc0] font-medium">{label}</p>
-      </div>
+      {label && (
+        <div className="p-4 text-center">
+          <p className="text-[#2affc0] font-medium">{label}</p>
+        </div>
+      )}
     </motion.div>
   );
 }

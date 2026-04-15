@@ -11,6 +11,7 @@ import {
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
+import { BeforeAfterCard } from './components/BeforeAfterCard';
 import { ProblemCard } from './components/ProblemCard';
 import { DeploymentCard } from './components/DeploymentCard';
 import { MetricCard } from './components/MetricCard';
@@ -110,18 +111,12 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden border-2 border-[rgba(42,255,192,0.3)] shadow-2xl">
-                <img
-                  src="/images/01b_hero_exterior_villa.jpg"
-                  alt="AI Paint Visualiser — before and after on a villa exterior"
-                  className="w-full h-auto"
+              <div className="rounded-2xl overflow-hidden border-2 border-[rgba(42,255,192,0.3)] shadow-2xl">
+                <BeforeAfterCard
+                  beforeImage="/images/01b_hero_villa_v3_before.jpg"
+                  afterImage="/images/01b_hero_villa_v3_after.jpg"
+                  label=""
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="bg-black/50 px-3 py-1 rounded">Before</span>
-                    <span className="bg-[#2affc0]/80 text-[#2b2b2d] px-3 py-1 rounded">After</span>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -143,34 +138,26 @@ export default function App() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { src: "/images/01a_hero_exterior_before_after.jpg", label: "Apartment Exterior", alt: "Apartment building before and after paint visualization" },
-              { src: "/images/02a_hero_interior_before_after.jpg", label: "Living Room Interior", alt: "Living room before and after paint visualization" },
-              { src: "/images/01_hero_exterior_before_after.jpg", label: "Multi-Story Building", alt: "Multi-story building before and after paint visualization" },
-              { src: "/images/02c_hero_interior_bedroom.jpg", label: "Bedroom Interior", alt: "Bedroom before and after paint visualization" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#353538] rounded-xl overflow-hidden border border-[rgba(42,255,192,0.2)] hover:border-[rgba(42,255,192,0.4)] transition-all duration-300"
-              >
-                <div className="relative">
-                  <img src={item.src} alt={item.alt} className="w-full h-auto" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                    <div className="flex justify-between text-xs font-medium">
-                      <span className="bg-black/50 px-2 py-1 rounded">Before</span>
-                      <span className="bg-[#2affc0]/80 text-[#2b2b2d] px-2 py-1 rounded">After</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4 text-center">
-                  <p className="text-[#2affc0] font-medium">{item.label}</p>
-                </div>
-              </motion.div>
-            ))}
+            <BeforeAfterCard
+              beforeImage="/images/01d_commercial_building_v2_before.jpg"
+              afterImage="/images/01d_commercial_building_v2_after.jpg"
+              label="Commercial Building"
+            />
+            <BeforeAfterCard
+              beforeImage="/images/02a_hero_interior_before_after_before.jpg"
+              afterImage="/images/02a_hero_interior_before_after_after.jpg"
+              label="Living Room Interior"
+            />
+            <BeforeAfterCard
+              beforeImage="/images/01_hero_exterior_before_after_before.jpg"
+              afterImage="/images/01_hero_exterior_before_after_after.jpg"
+              label="Multi-Story Building"
+            />
+            <BeforeAfterCard
+              beforeImage="/images/02c_hero_interior_bedroom_before.jpg"
+              afterImage="/images/02c_hero_interior_bedroom_after.jpg"
+              label="Bedroom Interior"
+            />
           </div>
         </div>
       </section>
