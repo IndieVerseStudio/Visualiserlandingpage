@@ -4,17 +4,15 @@ import {
   Code,
   Puzzle,
   Server,
-  Layers,
-  AlertCircle,
-  Grid3x3,
   Mail,
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
 import { BeforeAfterCard } from './components/BeforeAfterCard';
-import { ProblemCard } from './components/ProblemCard';
+import { ComparisonRow } from './components/ComparisonRow';
 import { DeploymentCard } from './components/DeploymentCard';
 import { MetricCard } from './components/MetricCard';
+import { DeviceCarousel } from './components/DeviceCarousel';
 
 const CALENDLY_LINK = "https://calendly.com/prakhar-29/30min";
 
@@ -49,9 +47,9 @@ export default function App() {
 
       {/* Navigation */}
       <nav className="relative z-20 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        <div className="text-xl font-bold">
-          <span className="text-[#2affc0]">Indieverse</span> Studio
-        </div>
+        <a href="https://www.indieverse.studio" target="_blank" rel="noopener noreferrer">
+          <img src="/images/indieverse-logo-full.png" alt="Indieverse Studio" className="h-8 md:h-10" />
+        </a>
         <div className="hidden md:flex items-center gap-8">
           <a href="#showcase" className="text-[#a0a0a0] hover:text-white transition-colors">Results</a>
           <a href="#how-it-works" className="text-[#a0a0a0] hover:text-white transition-colors">How It Works</a>
@@ -65,6 +63,14 @@ export default function App() {
             Book a Demo
           </a>
         </div>
+        <a
+          href={CALENDLY_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden bg-[#2affc0] text-[#2b2b2d] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#35d2b8] transition-all duration-300"
+        >
+          Book a Demo
+        </a>
       </nav>
 
       {/* Hero Section */}
@@ -77,10 +83,10 @@ export default function App() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                See Paint on Any Building Before a Single Brushstroke
+                A Paint Visualiser for Real Buildings
               </h1>
               <p className="text-xl text-[#a0a0a0] mb-8 leading-relaxed">
-                The AI paint visualiser that handles complex exteriors, cluttered interiors, and everything your current tool can't. Photorealistic results, not simple color overlays.
+                Built for the images your customers actually upload - complex exteriors, mixed materials, and imperfect conditions. Delivers accurate, true-to-life results instead of flat overlays.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -96,12 +102,12 @@ export default function App() {
                   href="#showcase"
                   className="border-2 border-[#2affc0] text-[#2affc0] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(42,255,192,0.1)] transition-all duration-300 text-center"
                 >
-                  See Examples
+                  See Results
                 </a>
               </div>
 
               <p className="text-sm text-[#a0a0a0]">
-                Trusted by one of India's top 3 paint brands | Millions of visualizations served
+                The world's most accurate paint visualiser powered by GenAI
               </p>
             </motion.div>
 
@@ -124,7 +130,7 @@ export default function App() {
       </section>
 
       {/* Before/After Showcase */}
-      <section id="showcase" className="relative py-20 px-6">
+      <section id="showcase" className="relative py-20 px-6 bg-[#232325]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -133,8 +139,8 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">See the Difference</h2>
-            <p className="text-xl text-[#a0a0a0]">Real results on real buildings — exteriors and interiors</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Accurate Results Across Any Surface</h2>
+            <p className="text-xl text-[#a0a0a0]">From interiors to multi-story exteriors, every result reflects how the space would look after painting - with lighting, texture, and depth preserved.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -162,59 +168,125 @@ export default function App() {
         </div>
       </section>
 
-      {/* The Problem Section */}
-      <section className="relative py-20 px-6 bg-[#232325]">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Why Most Paint Visualisers Fail</h2>
-            <p className="text-xl text-[#a0a0a0]">The truth about existing tools</p>
-          </motion.div>
-
+      {/* Complex Exterior Showcase */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-2xl overflow-hidden border-2 border-red-500/30"
             >
-              <img
-                src="/images/04a_problem_bad_visualisation.jpg"
-                alt="Example of a bad paint visualiser — flat color overlay that looks fake"
-                className="w-full h-auto"
-              />
-              <div className="absolute top-4 left-4 bg-red-500/80 px-3 py-1 rounded text-sm font-medium">
-                Typical "Visualiser" Result
-              </div>
+              <h2 className="text-4xl font-bold mb-6">Built for Complex Exteriors</h2>
+              <p className="text-xl text-[#a0a0a0] mb-6 leading-relaxed">
+                Most visualisers perform well only on simple, clean walls. In practice, customer images are far more complex - with architectural details, shadows, obstructions, and multiple materials. This system is designed specifically for those conditions. It identifies all paintable surfaces across the structure and maintains accuracy even in dense, visually complex scenes.
+              </p>
+              <a
+                href={CALENDLY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
+              >
+                See it in action <ArrowRight className="w-5 h-5" />
+              </a>
             </motion.div>
 
-            <div className="grid gap-6">
-              <ProblemCard
-                Icon={Layers}
-                title="Flat Color Overlays"
-                description="Most tools paint a flat color on a detected wall. Shadows, textures, and lighting disappear. It looks fake — and your customers notice."
-                delay={0}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden border border-[rgba(42,255,192,0.2)]"
+            >
+              <img
+                src="/images/03a_showcase_complex_exterior.jpg"
+                alt="Complex building exterior with precise paint visualization"
+                className="w-full h-auto"
               />
-              <ProblemCard
-                Icon={AlertCircle}
-                title="Can't Handle Complexity"
-                description="Upload a real building exterior or a room with furniture, and existing tools break down completely. Columns, trim, and facades? Forget it."
-                delay={0.1}
-              />
-              <ProblemCard
-                Icon={Grid3x3}
-                title="Limited to Simple Scenes"
-                description="They work on a plain white wall in a studio photo. Not on the buildings your customers actually live and work in."
-                delay={0.2}
-              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="relative py-20 px-6 bg-[#232325]">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Where Standard Visualisers Fall Short</h2>
+            <p className="text-xl text-[#a0a0a0]">A direct comparison across common real-world scenarios</p>
+          </motion.div>
+
+          {/* Column headers - desktop */}
+          <div className="hidden md:grid grid-cols-[1fr_1fr_1fr] gap-6 pb-4 border-b border-[rgba(255,255,255,0.15)]">
+            <div />
+            <div>
+              <span className="text-red-400 font-semibold text-base tracking-wide">Other Visualisers</span>
+            </div>
+            <div>
+              <span className="text-[#2affc0] font-semibold text-base tracking-wide">Indieverse Visualiser</span>
             </div>
           </div>
+          {/* Column headers - mobile */}
+          <div className="md:hidden grid grid-cols-2 gap-3 pb-3 border-b border-[rgba(255,255,255,0.15)]">
+            <div>
+              <span className="text-red-400 font-semibold text-xs tracking-wide">Other Visualisers</span>
+            </div>
+            <div>
+              <span className="text-[#2affc0] font-semibold text-xs tracking-wide">Indieverse Visualiser</span>
+            </div>
+          </div>
+
+          {/* Comparison rows */}
+          <ComparisonRow
+            feature="Simple Walls"
+            otherTools="Works reliably on flat walls in controlled, studio-quality images."
+            ourAI="Handles simple walls easily, while also supporting complex scenarios."
+            otherStatus="partial"
+            otherImage="/images/04b_problem_bad_interior.jpg"
+            ourImage="/images/02a_hero_interior_before_after_after.jpg"
+            delay={0}
+          />
+          <ComparisonRow
+            feature="Complex Exteriors"
+            otherTools="Struggles with detailed buildings. Surfaces are missed or painted wrong."
+            ourAI="Paints across full building exteriors including facades, columns, and trim."
+            otherStatus="fail"
+            otherImage="/images/04a_problem_bad_visualisation.jpg"
+            ourImage="/images/01d_commercial_building_v2_after.jpg"
+            delay={0.1}
+          />
+          <ComparisonRow
+            feature="AI Cleanup"
+            otherTools="Relies entirely on the uploaded image, including clutter and distractions."
+            ourAI="Cleans up scaffolding, wires, and vegetation before applying paint."
+            otherStatus="fail"
+            otherImage="/images/01b_hero_villa_v3_before.jpg"
+            ourImage="/images/01b_hero_villa_v3_after.jpg"
+            delay={0.2}
+          />
+          <ComparisonRow
+            feature="Trim & Edges"
+            otherTools="Color often bleeds across edges, frames, and structural boundaries."
+            ourAI="Maintains clean separation, keeping trims, frames, and edges intact."
+            otherStatus="fail"
+            ourImage="/images/03a_showcase_complex_exterior.jpg"
+            delay={0.3}
+          />
+          <ComparisonRow
+            feature="Lighting & Shadows"
+            otherTools="Applies uniform color, reducing depth, shadows, and realism."
+            ourAI="Preserves natural lighting, shadows, and texture for a true-to-life result."
+            otherStatus="fail"
+            ourImage="/images/01c_hero_exterior_townhouses_after.jpg"
+            delay={0.4}
+          />
         </div>
       </section>
 
@@ -228,26 +300,26 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">How It Works</h2>
-            <p className="text-xl text-[#a0a0a0]">Three steps to photorealistic visualization</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Simple Workflow</h2>
+            <p className="text-xl text-[#a0a0a0]">Designed to keep the experience straightforward despite the underlying complexity</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {[
               {
                 step: "01",
-                title: "Upload Any Image",
-                description: "Interior, exterior, simple or complex. Our AI understands every surface — walls, trim, facades, columns — no matter how cluttered the scene.",
+                title: "Upload Image",
+                description: "Upload any interior or exterior image - the system adapts to different lighting, angles, and scene complexity.",
               },
               {
                 step: "02",
-                title: "Pick Your Colors",
-                description: "Select from your brand's color catalog. Our AI identifies every paintable surface and lets your customers apply colors individually or in groups.",
+                title: "Cleanup and Segmentation",
+                description: "The AI cleans up the scene - removing clutter, wires, and obstructions - and identifies every unique paintable surface across the image.",
               },
               {
                 step: "03",
-                title: "See It in Seconds",
-                description: "Get a photorealistic preview with accurate shadows, textures, and lighting. Not a color overlay — a true visualization of how paint will actually look.",
+                title: "Apply Paint & Visualise",
+                description: "Choose colors from your catalog, apply them to individual or grouped surfaces, and see a true-to-life preview of the finished space.",
               },
             ].map((item, index) => (
               <motion.div
@@ -282,8 +354,8 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Works Everywhere Your Customers Are</h2>
-            <p className="text-xl text-[#a0a0a0]">Web, tablet, and mobile — fully responsive, fully branded as yours</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Works Across All Devices</h2>
+            <p className="text-xl text-[#a0a0a0]">Delivers a consistent experience across web and mobile, fully aligned with your brand and customer journey.</p>
           </motion.div>
 
           <motion.div
@@ -291,13 +363,8 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-2xl overflow-hidden"
           >
-            <img
-              src="/images/05c_mockup_multi_device.jpg"
-              alt="Paint Visualiser running on laptop, tablet, and mobile"
-              className="w-full h-auto"
-            />
+            <DeviceCarousel />
           </motion.div>
         </div>
       </section>
@@ -312,33 +379,33 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Built to Fit Your Stack</h2>
-            <p className="text-xl text-[#a0a0a0]">Deploy however you need</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Flexible Deployment Options</h2>
+            <p className="text-xl text-[#a0a0a0]">Designed to integrate cleanly into your existing systems and workflows</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <DeploymentCard
               Icon={Cloud}
               title="SaaS Platform"
-              description="Ready to use, your brand colors loaded"
+              description="Quick to deploy with your catalog and branding configured."
               delay={0}
             />
             <DeploymentCard
               Icon={Puzzle}
               title="White-Label SDK"
-              description="Embed in your app or website, fully branded as yours"
+              description="Embed directly into your website or application with full brand control."
               delay={0.1}
             />
             <DeploymentCard
               Icon={Code}
               title="API Integration"
-              description="Plug into your existing tools and workflows"
+              description="Integrate into internal tools, CRM systems, or custom workflows."
               delay={0.2}
             />
             <DeploymentCard
               Icon={Server}
               title="On-Premise"
-              description="Runs on your infrastructure for full data control"
+              description="Deploy within your infrastructure for full control over data and operations."
               delay={0.3}
             />
           </div>
@@ -360,12 +427,12 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Best-in-Class Accuracy", description: "GenAI-powered surface detection that handles complex buildings, columns, trim, and facades — not just plain walls." },
-              { title: "Photorealistic Results", description: "Preserves shadows, textures, and natural lighting. Your customers see how paint actually looks, not a flat overlay." },
-              { title: "Exteriors That Work", description: "The only visualiser that reliably handles complex building exteriors — commercial, residential, multi-story." },
-              { title: "Smart AI Features", description: "Auto-grouping of similar surfaces, AI Cleanup, and intelligent surface detection that improves with every image." },
-              { title: "Your Brand, Your Product", description: "White-label ready. Load your color catalog, apply your branding, deploy on your domain. Customers never see us." },
-              { title: "Production-Proven", description: "Trusted by one of India's top 3 paint companies. Millions of visualizations served across web and mobile." },
+              { title: "Advanced AI Features", description: "Includes scene cleanup and intelligent surface grouping to improve usability." },
+              { title: "Accuracy on Real Buildings", description: "Designed for complex, real-world structures rather than ideal conditions." },
+              { title: "Consistent Output Quality", description: "Delivers reliable results across a wide range of image types and environments." },
+              { title: "Realistic Visualisation", description: "Maintains lighting, shadows, and texture for a more accurate representation." },
+              { title: "White-Label Ready", description: "Fully aligned with your brand, catalog, and customer experience." },
+              { title: "Fast Integration", description: "Go live in weeks, not months. Available as SaaS, white-label, API, or on-premise." },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -396,56 +463,15 @@ export default function App() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <blockquote className="text-3xl lg:text-4xl font-semibold mb-12 leading-relaxed max-w-4xl mx-auto">
-              "Trusted by one of India's top 3 paint companies, serving millions of users across web and mobile."
-            </blockquote>
+            <p className="text-3xl lg:text-4xl font-semibold mb-12 leading-relaxed max-w-4xl mx-auto">
+              Let your customers fall in love with the color before they pick up the brush.
+            </p>
           </motion.div>
 
           <div className="flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-[rgba(255,255,255,0.1)]">
-            <MetricCard value="10M+" label="Visualizations" delay={0} />
-            <MetricCard value="99.5%" label="Uptime" delay={0.1} />
-            <MetricCard value="< 5s" label="Generation Time" delay={0.2} />
-          </div>
-        </div>
-      </section>
-
-      {/* Complex Exterior Showcase */}
-      <section className="relative py-20 px-6 bg-[#232325]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl font-bold mb-6">Complex Exteriors? That's Where We Shine.</h2>
-              <p className="text-xl text-[#a0a0a0] mb-6 leading-relaxed">
-                Most visualisers give up on buildings with columns, arches, decorative trim, or mixed materials. Ours doesn't. Our AI identifies every paintable surface — even on the most architecturally complex buildings.
-              </p>
-              <a
-                href={CALENDLY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
-              >
-                See it on your buildings <ArrowRight className="w-5 h-5" />
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden border border-[rgba(42,255,192,0.2)]"
-            >
-              <img
-                src="/images/03a_showcase_complex_exterior.jpg"
-                alt="Complex building exterior with precise paint visualization"
-                className="w-full h-auto"
-              />
-            </motion.div>
+            <MetricCard value="10x Faster" label="From hours to minutes" delay={0} />
+            <MetricCard value="~95%" label="Success rate on real photos" delay={0.1} />
+            <MetricCard value="10,000+" label="Enterprise-grade visualizations delivered" delay={0.2} />
           </div>
         </div>
       </section>
@@ -464,7 +490,7 @@ export default function App() {
               Ready to Upgrade Your Paint Experience?
             </h2>
             <p className="text-xl mb-8 text-[#2b2b2d]">
-              Book a 15-minute call. We'll show you what our AI can do on your actual buildings — free, no commitment.
+              Book a 15-minute call. We'll show you what our GenAI powered visualiser can do on actual buildings.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -477,15 +503,15 @@ export default function App() {
                 Book a Demo
               </a>
               <a
-                href="mailto:hello@indieverse.studio"
+                href="mailto:info@indieverse.studio"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 inline-flex items-center justify-center gap-2"
               >
-                <Mail className="w-5 h-5" /> Email Us
+                <Mail className="w-5 h-5" /> Contact Us
               </a>
             </div>
 
             <p className="text-sm text-[#2b2b2d]">
-              Free pilot available — 60 days, 200 visualizations, no commitment
+              Free pilot available - 60 days, 200 visualizations
             </p>
           </motion.div>
         </div>
@@ -496,11 +522,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-2">
-                <span className="text-[#2affc0]">Indieverse</span> Studio
-              </h3>
-              <p className="text-[#a0a0a0]">The world's most accurate AI paint visualiser</p>
-              <p className="text-[#a0a0a0] mt-2">hello@indieverse.studio</p>
+              <a href="https://www.indieverse.studio" target="_blank" rel="noopener noreferrer" className="inline-block mb-2">
+                <img src="/images/indieverse-logo-full.png" alt="Indieverse Studio" className="h-10" />
+              </a>
+              <p className="text-[#a0a0a0]">Accurate AI visualisation for real-world buildings</p>
+              <p className="text-[#a0a0a0] mt-2">info@indieverse.studio</p>
             </div>
             <div className="flex flex-wrap gap-6 md:justify-end items-start">
               <a href="#showcase" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Results</a>
