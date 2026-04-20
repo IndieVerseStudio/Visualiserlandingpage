@@ -140,7 +140,7 @@ export default function App() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">Accurate Results Across Any Surface</h2>
-            <p className="text-xl text-[#a0a0a0]">From interiors to multi-story exteriors, every result reflects how the space would look after painting - with lighting, texture, and depth preserved.</p>
+            <p className="text-xl text-[#a0a0a0]">From interiors to multi-story exteriors, outputs remain true to the original space while preserving lighting, material texture, and depth.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -273,10 +273,10 @@ export default function App() {
           />
           <ComparisonRow
             feature="Lighting & Shadows"
-            otherTools="Applies uniform color, reducing depth, shadows, and realism."
+            otherTools="Applies uniform colour, reducing depth, shadows, and realism."
             ourAI="Preserves natural lighting, shadows, and texture for a true-to-life result."
             otherStatus="fail"
-            otherImage="/images/comparison_lighting_bad_townhouses.jpg"
+            otherImage="/images/comparison_lighting_bad_2.png"
             ourImage="/images/01c_hero_exterior_townhouses_after.jpg"
             delay={0.3}
           />
@@ -312,7 +312,7 @@ export default function App() {
               {
                 step: "03",
                 title: "Apply Paint & Visualise",
-                description: "Choose colors from your catalog, apply them to individual or grouped surfaces, and see a true-to-life preview of the finished space.",
+                description: "Choose colours from your catalog, apply them to individual or grouped surfaces, and see a true-to-life preview of the finished space.",
               },
             ].map((item, index) => (
               <motion.div
@@ -457,14 +457,14 @@ export default function App() {
             className="text-center mb-12"
           >
             <p className="text-3xl lg:text-4xl font-semibold mb-12 leading-relaxed max-w-4xl mx-auto">
-              Let your customers fall in love with the color before they pick up the brush.
+              Let your customers fall in love with the colour before they pick up the brush.
             </p>
           </motion.div>
 
           <div className="flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-[rgba(255,255,255,0.1)]">
             <MetricCard value="10x Faster" label="From hours to minutes" delay={0} />
             <MetricCard value=">95%" label="Success rate on real photos" delay={0.1} />
-            <MetricCard value="10,000+" label="Enterprise-grade visualizations delivered" delay={0.2} />
+            <MetricCard value="100,000+" label="Enterprise-grade visualizations delivered" delay={0.2} />
           </div>
         </div>
       </section>
