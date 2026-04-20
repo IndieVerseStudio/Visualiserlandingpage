@@ -250,7 +250,7 @@ export default function App() {
             ourAI="Handles simple walls easily, while also supporting complex scenarios."
             otherStatus="partial"
             otherImage="/images/04b_problem_bad_interior.jpg"
-            ourImage="/images/02a_hero_interior_before_after_after.jpg"
+            ourImage="/images/04b_problem_good_interior.jpg"
             delay={0}
           />
           <ComparisonRow
@@ -258,8 +258,8 @@ export default function App() {
             otherTools="Struggles with detailed buildings. Surfaces are missed or painted wrong."
             ourAI="Paints across full building exteriors including facades, columns, and trim."
             otherStatus="fail"
-            otherImage="/images/04a_problem_bad_visualisation.jpg"
-            ourImage="/images/01d_commercial_building_v2_after.jpg"
+            otherImage="/images/problem_complex_exterior_bad.png"
+            ourImage="/images/problem_complex_exterior_good.png"
             delay={0.1}
           />
           <ComparisonRow
@@ -267,25 +267,18 @@ export default function App() {
             otherTools="Relies entirely on the uploaded image, including clutter and distractions."
             ourAI="Cleans up scaffolding, wires, and vegetation before applying paint."
             otherStatus="fail"
-            otherImage="/images/01b_hero_villa_v3_before.jpg"
-            ourImage="/images/01b_hero_villa_v3_after.jpg"
+            otherImage="/images/01b_hero_exterior_villa_v2_before.jpg"
+            ourImage="/images/01b_hero_exterior_villa_v2_after.jpg"
             delay={0.2}
-          />
-          <ComparisonRow
-            feature="Trim & Edges"
-            otherTools="Color often bleeds across edges, frames, and structural boundaries."
-            ourAI="Maintains clean separation, keeping trims, frames, and edges intact."
-            otherStatus="fail"
-            ourImage="/images/03a_showcase_complex_exterior.jpg"
-            delay={0.3}
           />
           <ComparisonRow
             feature="Lighting & Shadows"
             otherTools="Applies uniform color, reducing depth, shadows, and realism."
             ourAI="Preserves natural lighting, shadows, and texture for a true-to-life result."
             otherStatus="fail"
+            otherImage="/images/comparison_lighting_bad_townhouses.jpg"
             ourImage="/images/01c_hero_exterior_townhouses_after.jpg"
-            delay={0.4}
+            delay={0.3}
           />
         </div>
       </section>
@@ -470,7 +463,7 @@ export default function App() {
 
           <div className="flex flex-col md:flex-row justify-center items-center divide-y md:divide-y-0 md:divide-x divide-[rgba(255,255,255,0.1)]">
             <MetricCard value="10x Faster" label="From hours to minutes" delay={0} />
-            <MetricCard value="~95%" label="Success rate on real photos" delay={0.1} />
+            <MetricCard value=">95%" label="Success rate on real photos" delay={0.1} />
             <MetricCard value="10,000+" label="Enterprise-grade visualizations delivered" delay={0.2} />
           </div>
         </div>

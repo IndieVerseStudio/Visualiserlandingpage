@@ -7,9 +7,9 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  { image: '/images/device_mockup_desktop.jpg', label: 'Desktop' },
-  { image: '/images/device_mockup_tablet.jpg', label: 'Tablet' },
-  { image: '/images/06c_mockup_mobile_three_screens.jpg', label: 'Mobile' },
+  { image: '/images/device_mockup_desktop_v2.jpg', label: 'Desktop' },
+  { image: '/images/device_mockup_mobile_v2.jpg', label: 'Mobile' },
+  { image: '/images/device_mockup_tablet_v2.jpg', label: 'Tablet' },
 ];
 
 const AUTO_ROTATE_INTERVAL = 4000;
