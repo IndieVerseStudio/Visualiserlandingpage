@@ -15,6 +15,7 @@ import { MetricCard } from './components/MetricCard';
 import { DeviceCarousel } from './components/DeviceCarousel';
 
 const CALENDLY_LINK = "https://calendly.com/prakhar-29/30min";
+const DEMO_APP_LINK = "https://app.paint.indieverse.studio/";
 
 export default function App() {
   return (
@@ -58,18 +59,26 @@ export default function App() {
             href={CALENDLY_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#2affc0] text-[#2b2b2d] px-5 py-2 rounded-lg font-semibold hover:bg-[#35d2b8] transition-all duration-300"
+            className="text-[#a0a0a0] hover:text-white transition-colors"
           >
             Book a Demo
           </a>
+          <a
+            href={DEMO_APP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#2affc0] text-[#2b2b2d] px-5 py-2 rounded-lg font-semibold hover:bg-[#35d2b8] transition-all duration-300"
+          >
+            Try it out
+          </a>
         </div>
         <a
-          href={CALENDLY_LINK}
+          href={DEMO_APP_LINK}
           target="_blank"
           rel="noopener noreferrer"
           className="md:hidden bg-[#2affc0] text-[#2b2b2d] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#35d2b8] transition-all duration-300"
         >
-          Book a Demo
+          Try it out
         </a>
       </nav>
 
@@ -91,18 +100,20 @@ export default function App() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href={CALENDLY_LINK}
+                  href={DEMO_APP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#2affc0] text-[#2b2b2d] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#35d2b8] transition-all duration-300 hover:scale-105 text-center"
                 >
-                  Book a Demo
+                  Try it out
                 </a>
                 <a
-                  href="#showcase"
+                  href={CALENDLY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="border-2 border-[#2affc0] text-[#2affc0] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(42,255,192,0.1)] transition-all duration-300 text-center"
                 >
-                  See Results
+                  Book a Demo
                 </a>
               </div>
 
@@ -183,7 +194,7 @@ export default function App() {
                 Most visualisers perform well only on simple, clean walls. In practice, customer images are far more complex - with architectural details, shadows, obstructions, and multiple materials. This system is designed specifically for those conditions. It identifies all paintable surfaces across the structure and maintains accuracy even in dense, visually complex scenes.
               </p>
               <a
-                href={CALENDLY_LINK}
+                href={DEMO_APP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
@@ -483,28 +494,36 @@ export default function App() {
               Ready to Upgrade Your Paint Experience?
             </h2>
             <p className="text-xl mb-8 text-[#2b2b2d]">
-              Book a 15-minute call. We'll show you what our GenAI powered visualiser can do on actual buildings.
+              Try the live visualiser now, or book a 15-minute call to see what it can do on actual buildings.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <a
-                href={CALENDLY_LINK}
+                href={DEMO_APP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#2b2b2d] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a1a1c] transition-all duration-300 hover:scale-105"
               >
-                Book a Demo
+                Try it out
               </a>
               <a
-                href="mailto:info@indieverse.studio"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 inline-flex items-center justify-center gap-2"
+                href={CALENDLY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-[#2b2b2d] text-[#2b2b2d] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[rgba(43,43,45,0.1)] transition-all duration-300"
               >
-                <Mail className="w-5 h-5" /> Contact Us
+                Book a Demo
               </a>
             </div>
 
             <p className="text-sm text-[#2b2b2d]">
-              Free pilot available - 60 days, 200 visualizations
+              Free pilot available - 60 days, 200 visualizations.{' '}
+              <a
+                href="mailto:info@indieverse.studio"
+                className="inline-flex items-center gap-1 font-semibold underline underline-offset-4 hover:text-white transition-colors"
+              >
+                <Mail className="w-4 h-4" /> Contact us
+              </a>
             </p>
           </motion.div>
         </div>
@@ -525,6 +544,7 @@ export default function App() {
               <a href="#showcase" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Results</a>
               <a href="#how-it-works" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">How It Works</a>
               <a href="#deploy" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Deployment</a>
+              <a href={DEMO_APP_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Try it out</a>
               <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Book a Demo</a>
               <a href="https://www.indieverse.studio" target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Indieverse.studio</a>
             </div>
