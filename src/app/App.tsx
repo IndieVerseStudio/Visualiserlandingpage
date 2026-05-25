@@ -397,14 +397,6 @@ export default function App() {
                 >
                   Try Colour Suggestions <ArrowRight className="w-5 h-5" />
                 </a>
-                <a
-                  href={DEMO_APP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
-                >
-                  Apply it in the visualiser <ArrowRight className="w-5 h-5" />
-                </a>
               </div>
             </motion.div>
 
