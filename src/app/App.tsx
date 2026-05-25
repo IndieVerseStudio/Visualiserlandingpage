@@ -16,6 +16,10 @@ import { DeviceCarousel } from './components/DeviceCarousel';
 
 const CALENDLY_LINK = "https://calendly.com/prakhar-29/30min";
 const DEMO_APP_LINK = "https://app.paint.indieverse.studio/";
+const COLOUR_SUGGEST_LINK = "https://suggest.paint.indieverse.studio/";
+
+const colourSuggestTones = ["#EDEAE3", "#BFB8AB", "#6F6961", "#3C3935", "#1A1916"];
+const colourSuggestPalette = ["#F2EDE3", "#B5A48A", "#8FB4AE", "#6B7A82", "#2D2E33"];
 
 export default function App() {
   return (
@@ -54,6 +58,7 @@ export default function App() {
         <div className="hidden md:flex items-center gap-8">
           <a href="#showcase" className="text-[#a0a0a0] hover:text-white transition-colors">Results</a>
           <a href="#how-it-works" className="text-[#a0a0a0] hover:text-white transition-colors">How It Works</a>
+          <a href="#colour-suggest" className="text-[#a0a0a0] hover:text-white transition-colors">Colour Suggest</a>
           <a href="#deploy" className="text-[#a0a0a0] hover:text-white transition-colors">Deployment</a>
           <a
             href={CALENDLY_LINK}
@@ -348,8 +353,144 @@ export default function App() {
         </div>
       </section>
 
+      {/* Colour Suggest Section */}
+      <section id="colour-suggest" className="relative overflow-hidden py-20 px-6 bg-[#232325]">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(42,255,192,0.08)_0%,rgba(35,35,37,0)_42%,rgba(105,0,148,0.12)_100%)]" />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#2affc0]">
+                New companion tool
+              </p>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+                Find the right palette before visualising it
+              </h2>
+              <p className="text-xl text-[#a0a0a0] mb-8 leading-relaxed">
+                Colour Suggest reads the tones already present in a customer photo and recommends wall and accent palettes that fit the room, exterior, mood, and surface type.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                {[
+                  "Extracts dominant tones from uploaded spaces",
+                  "Suggests wall colours with coordinated accents",
+                  "Works across interiors, homes, and commercial exteriors",
+                ].map((item) => (
+                  <div key={item} className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#2affc0] flex-shrink-0 mt-1" />
+                    <p className="text-[#d7d7d9] leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                <a
+                  href={COLOUR_SUGGEST_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#2affc0] text-[#2b2b2d] px-7 py-4 rounded-lg font-semibold text-lg hover:bg-[#35d2b8] transition-all duration-300 hover:scale-105"
+                >
+                  Try Colour Suggestions <ArrowRight className="w-5 h-5" />
+                </a>
+                <a
+                  href={DEMO_APP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 text-[#2affc0] font-semibold text-lg hover:gap-3 transition-all duration-300"
+                >
+                  Apply it in the visualiser <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="rounded-2xl border border-[rgba(42,255,192,0.22)] bg-[#2b2b2d]/85 p-4 shadow-2xl shadow-black/30 backdrop-blur">
+                <div className="grid gap-4 md:grid-cols-[1fr_0.9fr]">
+                  <div className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
+                    <img
+                      src="/images/colour-suggest-interior-living.jpg"
+                      alt="Living room analysed by Colour Suggest"
+                      className="h-full min-h-[340px] w-full object-cover"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+                      <p className="mb-3 text-xs uppercase tracking-wider text-white/40">
+                        Tones detected
+                      </p>
+                      <div className="grid grid-cols-5 gap-2">
+                        {colourSuggestTones.map((hex) => (
+                          <div
+                            key={hex}
+                            className="h-12 rounded-md ring-1 ring-white/15"
+                            style={{ backgroundColor: hex }}
+                            title={hex}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-[#2affc0]/30 bg-white/[0.04] p-4 shadow-[0_0_35px_-18px_rgba(42,255,192,0.8)]">
+                      <div className="mb-3 flex items-baseline justify-between gap-4">
+                        <div>
+                          <p className="text-xs uppercase tracking-wider text-white/40">
+                            Recommended palette
+                          </p>
+                          <h3 className="text-lg font-semibold text-white">Coastal Calm</h3>
+                        </div>
+                        <p className="font-mono text-sm text-[#2affc0]">0.92</p>
+                      </div>
+                      <div className="flex gap-1.5">
+                        {colourSuggestPalette.map((hex, index) => (
+                          <div
+                            key={hex}
+                            className={`h-20 flex-1 rounded-md ring-1 ring-white/10 ${index === 0 ? "ring-2 ring-[#2affc0]" : ""}`}
+                            style={{ backgroundColor: hex }}
+                            title={hex}
+                          />
+                        ))}
+                      </div>
+                      <p className="mt-3 text-xs text-white/45">
+                        Wall candidate plus four accent colours, tuned to the uploaded scene.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="overflow-hidden rounded-lg border border-white/10">
+                        <img
+                          src="/images/colour-suggest-exterior-villa.jpg"
+                          alt="Exterior sample supported by Colour Suggest"
+                          className="h-24 w-full object-cover"
+                        />
+                      </div>
+                      <div className="rounded-lg border border-white/10 bg-[#18181a] p-3">
+                        <p className="text-xs uppercase tracking-wider text-white/40">Modes</p>
+                        <p className="mt-2 text-sm font-semibold text-white">Interior + Exterior</p>
+                        <p className="text-xs text-white/45">Context and mood aware</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Multi-Device Mockup Section */}
-      <section className="relative py-20 px-6 bg-[#232325]">
+      <section className="relative py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -543,6 +684,7 @@ export default function App() {
             <div className="flex flex-wrap gap-6 md:justify-end items-start">
               <a href="#showcase" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Results</a>
               <a href="#how-it-works" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">How It Works</a>
+              <a href={COLOUR_SUGGEST_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Colour Suggest</a>
               <a href="#deploy" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Deployment</a>
               <a href={DEMO_APP_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Try it out</a>
               <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-[#a0a0a0] hover:text-[#2affc0] transition-colors">Book a Demo</a>
